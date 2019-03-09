@@ -90,7 +90,6 @@ app.use(function(req, res,next){
 	if(err){
 		res.locals.message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">'+err+'</div>';
 	}
-	res.render("message",{message: res.locals.message})
 	next();
 });
 
