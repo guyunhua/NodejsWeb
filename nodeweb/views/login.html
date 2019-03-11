@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block" id="login0">登录</button>
+                        <button type="submit" class="btn btn-primary btn-block" id="login0" onclick="loginFunction()">登录</button>
                 </div>
                 <div class="form-group">
                         <button type="button" class="btn btn-info col-sm-2 col-sm-offset-10" id="register0">注册</button>
@@ -52,35 +52,58 @@
             </fieldset>
         </form>
     </div>
+	
+	<script>
+		function loginFunction(){
+			var username = document.getElementById("username").innerHTML;
+			var passworld = document.getElementById("password").innerHTML;
+			var data = {"uname":username,"upwd":password};
+			var ajax = ajaxObject();
+			ajax.open("post", '/login', true);
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4){
+					if(ajax.status == 200){
+						location.href = 'home';
+					}
+					els
+					{
+						location.href = 'login';
+					}
+				}
+			}
+			ajax.send(data);
+			alert("test");
+		}
+	</script>
 
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(function(){ 
-        $("#register0").click(function(){ 
-			console.log("s");
-            location.href = 'register';
-        });
-        $("#login0").click(function(){ 
-            var username = $("#username").val();
-            var password = $("#password").val();
-            var data = {"uname":username,"upwd":password};
-            $.ajax({ 
-                url:'/login',
-                type:'post',
-                data: data,
-                success: function(data,status){ 
-                    if(status == 'success'){ 
-                        location.href = 'home';
-                    }
-                },
-                error: function(data,status){ 
-                    if(status == 'error'){ 
-                        location.href = 'login';
-                    }
-                }
-            });
-        });
+    //    $("#register0").click(function(){ 
+	//		console.log("s");
+    //        location.href = 'register';
+    //    });
+    //    $("#login0").click(function(){ 
+    //        var username = $("#username").val();
+    //        var password = $("#password").val();
+    //        var data = {"uname":username,"upwd":password};
+    //        $.ajax({ 
+     //           url:'/login',
+    //            type:'post',
+    //            data: data,
+    //            success: function(data,status){ 
+    //                if(status == 'success'){ 
+    //                    location.href = 'home';
+    //                }
+     //           },
+     //           error: function(data,status){ 
+     //               if(status == 'error'){ 
+     //                   location.href = 'login';
+     //               }
+     //           }
+     //       });
+     //   });
     });
     </script>
 </body>
